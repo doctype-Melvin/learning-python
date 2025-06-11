@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
-# http://www.apache.org/licenses/LICENSE-2.0
 
 # Google's Python Class
+# http://www.apache.org/licenses/LICENSE-2.0
 # http://code.google.com/edu/languages/google-python-class/
 
 """Mimic pyquick exercise -- optional extra exercise.
@@ -47,14 +47,32 @@ import sys
 
 def mimic_dict(filename):
   """Returns mimic dict mapping each word to list of words which follow it."""
-  # +++your code here+++
-  return
+  read_file = open(filename, encoding='utf-8')
+  hash = {}
+  giant_string = []
+
+  full_string = read_file.read()
+  full_split = full_string.split()
+
+  for string in full_split:
+    giant_string.append(string.lower())
+
+  print(giant_string)
+
+
+  for ele in giant_string:
+    if not ele in hash:
+      hash[ele] = []
+
+
+
+  print(hash)
+  read_file.close()
 
 
 def print_mimic(mimic_dict, word):
   """Given mimic dict and start word, prints 200 random words."""
-  # +++your code here+++
-  return
+  print(mimic_dict, word)
 
 
 # Provided main(), calls mimic_dict() and mimic()
