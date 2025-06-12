@@ -93,11 +93,17 @@ def mimic_dict(filename):
 
 def print_mimic(mimic_dict, word):
   """Given mimic dict and start word, prints 200 random words."""
+  # set range to 200 iterations = 200 words
   for i in range(200):
+    # replace line break with space at end of string
     print(word, end=' ')
+    # find the list associated with the word from mimic_dict
     str_list = mimic_dict.get(word)
-    if not str:
+    # in any case where there is no list 
+    if not str_list:
+      # get the list of the empty string
       str_list = mimic_dict.get('')
+      # the next word is chosen randomly from the list
     word = random.choice(str_list)
 
 # Provided main(), calls mimic_dict() and mimic()
