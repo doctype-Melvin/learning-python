@@ -48,50 +48,27 @@ import sys
 def mimic_dict(filename):
   """Returns mimic dict mapping each word to list of words which follow it."""
   hash = {}
-  giant_string = []
+  current = ''
   
   read_file = open(filename, encoding='utf-8')
   full_string = read_file.read()
+  read_file.close()
   full_split = full_string.split()
 
-  for string in full_split:
-    giant_string.append(string.lower())
-
-  i = 0
-  # this is going in the right direction
-  # iterate of the giant_string and look
-  # for each word and the next one
-  # if the word is not in the hash, add the word as key
-  # and push the next word as list item
-  while i < len(giant_string):
-    if (i+1 < len(giant_string)):
-      if not giant_string[i] in hash:
-        hash[giant_string[i]] = [giant_string[i+1]]
-        i += 1
-      else:
-        hash[giant_string[i]].append(giant_string[i+1])
-        i += 1
+  
+  for word in full_split:
+    if not current in hash:
+      hash[current] = [word]
     else:
-      i += 1
-  print(i)
-
-  """
-  for ele in giant_string:
-    if not ele in hash:
-      hash[ele] = []
-      i += 1
-      print(i)
-    else:
-      i += 1
-  """
-
-  print(hash)
-  read_file.close()
+      hash[current].append(word)
+    current = word
+  
+  return hash
 
 
 def print_mimic(mimic_dict, word):
   """Given mimic dict and start word, prints 200 random words."""
-  print(mimic_dict, word)
+  print(mimic_dict, '')
 
 
 # Provided main(), calls mimic_dict() and mimic()
